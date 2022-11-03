@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<!-- <script src="index.js"></script> -->
+	<script type="text/javascript">
+		function abcd() {
+			alert("Mridula");
+			document.getElementById("a").innerHTML = "Atharva";
+		}
+
+		function testEcho(p1){
+			document.write(p1);
+		}
+
+		function dataFromNative(data) {
+			alert("Mridula");
+			document.getElementById("a").innerHTML = "Atharva";
+		    let nativeData = JSON.parse(data);
+		    switch (nativeData.type) {
+		      case "RESPONSE_FROM_NATIVE":
+		        dispatchEvent(
+		          new CustomEvent("RESPONSE_FROM_NATIVE", {
+		            detail: {
+		              data: nativeData,
+		              time: new Date()
+		            },
+		            bubbles: true,
+		            cancelable: true
+		          })
+		        );
+		        break;
+
+		      default:
+		        break;
+		    }
+		}
+		window.addEventListener("RESPONSE_FROM_NATIVE", (message) => {
+			alert("Mridula");
+			console.log("Message from RESPONSE_FROM_NATIVE: ", message, message["detail"]); 
+			document.getElementById("a").innerHTML = message["detail"];
+		}
+	</script>
+</head>
+<body>
+	<script type="text/javascript">
+		function d(){
+			KwikIDNativeInterface.fingerInfo();
+		}
+		function c(){
+			KwikIDNativeInterface.checker();
+		}
+	</script>
+	<button name="Submit" onClick="d()">Click</button>
+	<button name="Submit" onClick="c()">Test</button>
+	<p id="a">Mridula</p>
+	<p id="a">Mridula</p>
+
+</body>
+</html>
